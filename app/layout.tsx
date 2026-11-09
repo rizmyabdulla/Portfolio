@@ -5,6 +5,7 @@ import { JsonLd } from "@/lib/jsonld";
 import "./globals.css";
 import "./motion.css";
 import "./portrait.css";
+import "./enhancements.css";
 
 const display = Caveat_Brush({ weight: "400", subsets: ["latin"], variable: "--font-heading", display: "swap" });
 const handwriting = Patrick_Hand({ weight: "400", subsets: ["latin"], variable: "--font-body", display: "swap" });
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${handwriting.variable}`}>
+    <html lang="en" className={`${display.variable} ${handwriting.variable}`} suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem("my-portfolio:theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){}})()` }} /></head>
       <body>
         <a className="skip-link" href="#main">Skip to content</a>
         <JsonLd data={{

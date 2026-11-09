@@ -8,6 +8,7 @@ export const portfolio = {
   tagline: "Turning little ideas into useful things.",
   introduction: "I build for the web, mobile, and the occasional game. These days, I'm turning ideas into products with Kordify and TellerCat. Welcome to my little corner of the internet.",
   about: "I'm a software engineer and entrepreneur who enjoys taking an idea from the first sketch to a working product. My work spans web, game, and app development, with a soft spot for open source and learning something new along the way.",
+  currently: "building Kordify and TellerCat, and writing things down here.",
   email: "rizmyabdulla@gmail.com" as string | null,
   socials: [
     { label: "GitHub", display: "github.com/rizmyabdulla", url: "https://github.com/rizmyabdulla" },

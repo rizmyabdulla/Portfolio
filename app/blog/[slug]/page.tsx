@@ -7,6 +7,7 @@ import { CopyLink } from "@/components/copy-link";
 import { Markdown } from "@/components/markdown";
 import { formatPostDate, getBlogPost, getBlogPosts } from "@/lib/blog";
 import { portfolio } from "@/lib/portfolio";
+import { ReadingProgress } from "@/components/reading-progress";
 import { JsonLd } from "@/lib/jsonld";
 
 type PostPageProps = { params: Promise<{ slug: string }> };
@@ -49,6 +50,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <div className="post-page">
+      <ReadingProgress />
       <JsonLd data={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.description, datePublished: post.date, dateModified: post.updated ?? post.date, mainEntityOfPage: url, url, keywords: post.tags.join(", "), author: { "@type": "Person", name: portfolio.name, url: portfolio.url }, publisher: { "@type": "Person", name: portfolio.name, url: portfolio.url }, image: `${url}/opengraph-image` }} />
       <Link className="post-back ink-link" href="/blog"><ArrowLeft size={16} aria-hidden="true" /> Back to all notes</Link>
       <article>

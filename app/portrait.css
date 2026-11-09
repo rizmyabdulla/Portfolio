@@ -258,13 +258,28 @@
     font-size: 15px;
   }
   .portrait-joke {
-    left: -47%;
-    width: 175px;
-    font-size: 14px;
+    position: relative;
+    top: auto;
+    left: auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    width: auto;
+    margin: 12px 0 0;
+    font-size: 16px;
+    text-align: center;
+    transform: rotate(-2deg);
+  }
+  .portrait-joke > span:not(.portrait-joke-emoji) {
+    transform: none !important;
+    text-align: center;
   }
   .portrait-joke-arrow {
-    width: 84px;
-    right: -4px;
+    display: none;
+  }
+  .portrait-joke-emoji {
+    position: static;
+    flex: 0 0 30px;
   }
 }
 

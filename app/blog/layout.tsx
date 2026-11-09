@@ -7,7 +7,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
     <div className="notebook">
       <div className="paper-margin" aria-hidden="true" />
       <div className="page-shell">
-        <SiteHeader blogActive />
+        <SiteHeader />
         <main id="main" tabIndex={-1} className="blog-main">{children}</main>
         <SiteFooter />
       </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, Github, Instagram, Linkedin, Mail, MoveUpRight, Send, Sparkles, Twitter } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Mail, MoveUpRight, Sparkles } from "lucide-react";
 import { CopyDomain } from "@/components/copy-domain";
 import { HeroPortrait } from "@/components/hero-portrait";
 import { portfolio } from "@/lib/portfolio";
@@ -7,15 +7,17 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AnimatedEmoji } from "@/components/animated-emoji";
 import { HoverCard } from "@/components/hover-card";
+import { socialIcons } from "@/components/social-icons";
+import { CopyEmail } from "@/components/copy-email";
+import { Reveal } from "@/components/reveal";
 import { Tooltip } from "@/components/tooltip";
-
-const socialIcons: Record<string, typeof Github> = { GitHub: Github, Instagram, LinkedIn: Linkedin, Telegram: Send, X: Twitter };
 
 export default function Home() {
   return (
     <div className="notebook">
       <div className="paper-margin" aria-hidden="true" />
       <div className="page-shell">
+        <Reveal />
         <SiteHeader />
 
         <main id="main" tabIndex={-1}>
@@ -30,9 +32,10 @@ export default function Home() {
             <div className="hero-art"><HeroPortrait /></div>
           </section>
 
-          <section id="about" className="section about-section" aria-labelledby="about-title">
+          <section id="about" data-reveal className="section about-section" aria-labelledby="about-title">
             <div className="section-heading"><span className="section-number">01 /</span><h2 id="about-title">A little about me <AnimatedEmoji name="cool" size={32} className="heading-emoji" /></h2></div>
             <p className="about-copy">{portfolio.about}</p>
+            <p className="currently"><span aria-hidden="true">✳</span> Right now: {portfolio.currently}</p>
             <div className="principles">
               <p><span className="scribble-number">01.</span> Start with a <mark>little curiosity.</mark></p>
               <p><span className="scribble-number">02.</span> Make something <span className="wavy-underline">worth sharing.</span></p>
@@ -40,7 +43,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="work" className="section" aria-labelledby="work-title">
+          <section id="work" data-reveal className="section" aria-labelledby="work-title">
             <div className="section-heading"><span className="section-number">02 /</span><h2 id="work-title">Things I&apos;m building <AnimatedEmoji name="typing" size={34} className="heading-emoji" /></h2></div>
             <p className="section-description">From a first idea to something out in the world.</p>
             <div className="projects">
@@ -54,7 +57,7 @@ export default function Home() {
             <div className="coming-note"><Sparkles size={19} aria-hidden="true" /><p>More experiments and open-source work on <a className="ink-link" href="https://github.com/rizmyabdulla" target="_blank" rel="noopener noreferrer">my GitHub <ArrowUpRight size={14} aria-hidden="true" /></a>.</p></div>
           </section>
 
-          <section id="colophon" className="section colophon" aria-labelledby="colophon-title">
+          <section id="colophon" data-reveal className="section colophon" aria-labelledby="colophon-title">
             <div className="section-heading"><span className="section-number">03 /</span><h2 id="colophon-title">Things I work with <AnimatedEmoji name="giggle" size={31} className="heading-emoji" /></h2></div>
             <p className="section-description">A few familiar tools for web, mobile, and everything in between.</p>
             <ul className="tech-list" aria-label="Technologies I work with">{portfolio.skills.map(skill => <li key={skill.name}><Tooltip text={skill.hint}><span className="tech-chip" tabIndex={0}><span className={`tech-symbol symbol-${skill.tone}`} aria-hidden="true">{skill.mark}</span>{skill.name}</span></Tooltip></li>)}</ul>
@@ -63,11 +66,11 @@ export default function Home() {
 
           <section id="contact" className="closing-note" aria-labelledby="closing-title">
             <AnimatedEmoji name="coffee" size={42} className="closing-emoji" />
-            <div><p className="eyebrow">good things start with a hello</p><h2 id="closing-title">Have a little idea?</h2><p>Let&apos;s talk about what it could become.</p>{portfolio.email && <a className="email-link" href={`mailto:${portfolio.email}`}><Mail size={18} aria-hidden="true" />{portfolio.email}<ArrowUpRight size={17} aria-hidden="true" /></a>}<CopyDomain domain={portfolio.domain} /></div>
+            <div><p className="eyebrow">good things start with a hello</p><h2 id="closing-title">Have a little idea?</h2><p>Let&apos;s talk about what it could become.</p>{portfolio.email && <a className="email-link" href={`mailto:${portfolio.email}`}><Mail size={18} aria-hidden="true" />{portfolio.email}<ArrowUpRight size={17} aria-hidden="true" /></a>}{portfolio.email && <CopyEmail email={portfolio.email} />}<CopyDomain domain={portfolio.domain} /></div>
             <MoveUpRight className="closing-arrow" size={55} strokeWidth={1.2} aria-hidden="true" />
           </section>
 
-          <section id="online" className="social-links" aria-labelledby="online-title">
+          <section id="online" data-reveal className="social-links" aria-labelledby="online-title">
             <h2 id="online-title">Find me online</h2>
             <ul>{portfolio.socials.map(social => { const Icon = socialIcons[social.label] ?? ArrowUpRight; return <li key={social.url}><a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`${social.label}: ${social.display}`} data-social={social.label}><Icon size={26} strokeWidth={1.6} aria-hidden="true" /><span>{social.label}</span></a></li>; })}{portfolio.email && <li><a href={`mailto:${portfolio.email}`} aria-label="Email"><Mail size={26} strokeWidth={1.6} aria-hidden="true" /><span>Email</span></a></li>}</ul>
           </section>
