@@ -126,6 +126,12 @@ h3 { font-size: 29px; line-height: 1.2; margin: 15px 0 9px; }
 .social-links ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 14px 18px; }
 .social-links li a { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border: 1px dashed #abb4aa; font-size: 22px; transition: transform .2s, background-color .2s; }
 .social-links li a svg { color: #469bab; flex-shrink: 0; }
+.social-links li a[data-social="GitHub"]:hover svg { color: #24292f; }
+.social-links li a[data-social="Instagram"]:hover svg { color: #c13584; }
+.social-links li a[data-social="LinkedIn"]:hover svg { color: #0a66c2; }
+.social-links li a[data-social="Telegram"]:hover svg { color: #229ed9; }
+.social-links li a[data-social="X"]:hover svg { color: #111; }
+.social-links li a:focus-visible { outline: 2px dashed #326a96; outline-offset: 3px; }
 .social-links li a:hover { background: #f1eddf90; transform: translateY(-2px) rotate(-1deg); }
 .site-footer { border-top: 1px dashed #9ba69e; padding: 20px 0 29px; display: flex; align-items: center; gap: 20px; justify-content: space-between; color: var(--muted); font-size: 20px; }
 .site-footer p { display: inline-flex; align-items: center; gap: 5px; }
@@ -200,7 +206,7 @@ h3 { font-size: 29px; line-height: 1.2; margin: 15px 0 9px; }
 }
 
 .copy-fallback { display: grid; gap: 5px; margin-top: 8px; font-size: 15px; }
-.copy-fallback input { width: 100%; min-width: 0; padding: 7px 9px; border: 1px dashed #718b96; border-radius: 0; background: var(--paper); color: var(--ink); font-family: ui-monospace, monospace; font-size: 13px; }
+.copy-fallback input { width: 100%; min-width: 0; padding: 7px 9px; border: 1px dashed #718b96; border-radius: 0; background: var(--paper); color: var(--ink); font-family: ui-monospace, monospace; font-size: 17px; }
 .copy-fallback input:focus-visible { outline: 2px dashed #326a96; outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {

@@ -5,7 +5,7 @@
 .heading-emoji { margin-left: 7px; }
 .blog-emoji { transform: rotate(5deg); margin-left: 3px; }
 .closing-emoji { margin-top: 12px; }
-.paper-tooltip { position: fixed; z-index: 1000; width: max-content; max-width: min(240px, calc(100vw - 20px)); padding: 7px 12px; background: var(--blue); color: var(--ink); border: 1px solid #748d9d; border-radius: 2px 5px 3px 2px; box-shadow: 3px 3px 0 #44454318; font-family: var(--font-body), cursive; font-size: 16px; line-height: 1.4; pointer-events: none; transform: rotate(-1.5deg); animation: tooltip-arrive .12s ease-out; overflow-wrap: anywhere; }
+.paper-tooltip { position: fixed; z-index: 1000; width: max-content; max-width: min(240px, calc(100vw - 20px)); padding: 7px 12px; background: var(--blue); color: var(--ink); border: 1px solid #748d9d; border-radius: 2px 5px 3px 2px; box-shadow: 3px 3px 0 #44454318; font-family: var(--font-body), cursive; font-size: 18px; line-height: 1.4; pointer-events: none; transform: rotate(-1.5deg); animation: tooltip-arrive .12s ease-out; overflow-wrap: anywhere; }
 .paper-tooltip::before { content: ""; position: absolute; top: -5px; left: 13px; width: 8px; height: 8px; border-top: 1px solid #748d9d; border-left: 1px solid #748d9d; background: var(--blue); transform: rotate(45deg); }
 .motion-toggle { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 5px; padding: 3px 0; border: 0; background: transparent; color: var(--muted); font: inherit; cursor: pointer; }
 .motion-toggle:hover, .motion-toggle:focus-visible { color: #355c72; }
@@ -64,7 +64,7 @@ html[data-motion="paused"] :is(.project-link, .intro-contact, .email-link, .soci
   .tech-chip { padding: 7px 12px; }
   .heading-emoji { max-width: 28px; max-height: 28px; margin-left: 3px; }
   .closing-emoji { max-width: 30px; max-height: 30px; }
-  .paper-tooltip { font-size: 15px; }
+  .paper-tooltip { font-size: 17px; }
   .blog-emoji { max-width: 30px; max-height: 30px; }
 }
 

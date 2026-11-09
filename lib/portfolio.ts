@@ -14,7 +14,7 @@ export const portfolio = {
     { label: "Instagram", display: "instagram.com/_rizmyabdulla", url: "https://instagram.com/_rizmyabdulla" },
     { label: "LinkedIn", display: "linkedin.com/in/rizmyabdulla", url: "https://www.linkedin.com/in/rizmyabdulla/" },
     { label: "Telegram", display: "t.me/Notmrstrange", url: "https://t.me/Notmrstrange" },
-    { label: "X", display: "twitter.com/rizmyabdulla", url: "https://twitter.com/rizmyabdulla" },
+    { label: "X", display: "x.com/rizmyabdulla", url: "https://x.com/rizmyabdulla" },
   ] as { label: string; display: string; url: string }[],
   // Selected from the technology list in the public GitHub profile README.
   skills: [

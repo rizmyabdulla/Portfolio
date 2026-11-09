@@ -69,7 +69,7 @@ export default function Home() {
 
           <section id="online" className="social-links" aria-labelledby="online-title">
             <h2 id="online-title">Find me online</h2>
-            <ul>{portfolio.socials.map(social => { const Icon = socialIcons[social.label] ?? ArrowUpRight; return <li key={social.url}><a href={social.url} target="_blank" rel="noopener noreferrer"><Icon size={26} strokeWidth={1.6} aria-hidden="true" /><span>{social.label}</span></a></li>; })}{portfolio.email && <li><a href={`mailto:${portfolio.email}`} aria-label="Email"><Mail size={26} strokeWidth={1.6} aria-hidden="true" /><span>Email</span></a></li>}</ul>
+            <ul>{portfolio.socials.map(social => { const Icon = socialIcons[social.label] ?? ArrowUpRight; return <li key={social.url}><a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`${social.label}: ${social.display}`} data-social={social.label}><Icon size={26} strokeWidth={1.6} aria-hidden="true" /><span>{social.label}</span></a></li>; })}{portfolio.email && <li><a href={`mailto:${portfolio.email}`} aria-label="Email"><Mail size={26} strokeWidth={1.6} aria-hidden="true" /><span>Email</span></a></li>}</ul>
           </section>
         </main>
 
