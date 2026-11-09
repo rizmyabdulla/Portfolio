@@ -75,3 +75,19 @@ html[data-reveal="ready"]:not([data-motion="paused"]) [data-reveal]:not(.is-visi
 :root[data-theme="dark"] .reading-progress > div { background: #8fc0e0; }
 :root[data-theme="dark"] .theme-toggle:hover, :root[data-theme="dark"] .menu-toggle:hover { color: #f0e9c6; }
 :root[data-theme="dark"] .site-header nav { color: var(--ink); }
+
+/* Post table of contents */
+.post-toc { margin: 0 0 34px; padding: 18px 24px 16px; background: #f1eddf; border: 1px dashed #9ba8a3; transform: rotate(-.3deg); }
+.post-toc p { font-family: var(--font-heading), cursive; font-size: 26px; margin-bottom: 6px; }
+.post-toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; counter-reset: toc; }
+.post-toc li { counter-increment: toc; font-size: 21px; line-height: 1.4; }
+.post-toc li::before { content: counter(toc, decimal-leading-zero) "."; color: #747d7b; margin-right: 10px; }
+.post-toc li.toc-sub { padding-left: 26px; font-size: 19px; }
+.post-toc a { background: linear-gradient(var(--blue), var(--blue)) left 90% / 0 55% no-repeat; transition: background-size .2s; }
+.post-toc a:hover, .post-toc a:focus-visible { background-size: 100% 55%; }
+.post-toc a:focus-visible { outline: 2px dashed #326a96; outline-offset: 3px; }
+.post-prose :is(h2, h3) { scroll-margin-top: 24px; }
+html { scroll-behavior: smooth; }
+html[data-motion="paused"] { scroll-behavior: auto; }
+:root[data-theme="dark"] .post-toc { background: #262c2a; border-color: #3b4440; }
+:root[data-theme="dark"] .post-toc li::before { color: #8f988f; }

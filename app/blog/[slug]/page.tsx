@@ -8,6 +8,8 @@ import { Markdown } from "@/components/markdown";
 import { formatPostDate, getBlogPost, getBlogPosts } from "@/lib/blog";
 import { portfolio } from "@/lib/portfolio";
 import { ReadingProgress } from "@/components/reading-progress";
+import { TableOfContents } from "@/components/table-of-contents";
+import { extractHeadings } from "@/lib/headings";
 import { JsonLd } from "@/lib/jsonld";
 
 type PostPageProps = { params: Promise<{ slug: string }> };
@@ -69,6 +71,7 @@ export default async function PostPage({ params }: PostPageProps) {
           {post.tags.length > 0 && <ul className="post-tags" aria-label="Topics">{post.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
         </header>
 
+        <TableOfContents headings={extractHeadings(post.content)} />
         <Markdown content={post.content} />
 
         <footer className="post-signoff">
