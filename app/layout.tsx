@@ -14,16 +14,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(portfolio.url),
   authors: [{ name: portfolio.name, url: portfolio.url }],
   creator: portfolio.name,
-  title: { default: `${portfolio.name} — ${portfolio.role}`, template: `%s | ${portfolio.name}` },
+  title: { default: `${portfolio.name} - ${portfolio.role}`, template: `%s | ${portfolio.name}` },
   description: `${portfolio.name}, software engineer and entrepreneur building web and mobile products. Explore Kordify, TellerCat, and my work in open source.`,
   openGraph: {
     type: "website",
     url: portfolio.url,
     siteName: portfolio.name,
-    title: `${portfolio.name} — ${portfolio.role}`,
+    title: `${portfolio.name} - ${portfolio.role}`,
     description: portfolio.tagline,
   },
-  twitter: { card: "summary_large_image", title: `${portfolio.name} — ${portfolio.role}`, description: portfolio.tagline },
+  twitter: { card: "summary_large_image", title: `${portfolio.name} - ${portfolio.role}`, description: portfolio.tagline },
   alternates: { canonical: "/", types: { "application/rss+xml": "/blog/feed.xml" } },
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           "@context": "https://schema.org",
           "@graph": [
             { "@type": "Person", "@id": `${portfolio.url}/#person`, name: portfolio.name, url: portfolio.url, jobTitle: portfolio.role, description: portfolio.about, image: `${portfolio.url}/images/portrait-cutout.png`, ...(portfolio.email ? { email: portfolio.email } : {}), sameAs: portfolio.socials.map(social => social.url) },
-            { "@type": "WebSite", "@id": `${portfolio.url}/#website`, url: portfolio.url, name: `${portfolio.name} — ${portfolio.role}`, inLanguage: "en", publisher: { "@id": `${portfolio.url}/#person` } },
+            { "@type": "WebSite", "@id": `${portfolio.url}/#website`, url: portfolio.url, name: `${portfolio.name} - ${portfolio.role}`, inLanguage: "en", publisher: { "@id": `${portfolio.url}/#person` } },
             { "@type": "ProfilePage", url: portfolio.url, mainEntity: { "@id": `${portfolio.url}/#person` } },
           ],
         }} />
