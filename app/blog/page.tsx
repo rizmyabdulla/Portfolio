@@ -23,14 +23,14 @@ export default async function Blog() {
   return (
     <>
       <header className="blog-intro">
-        <p className="eyebrow"><PencilLine size={16} aria-hidden="true" /> WORDS BETWEEN THE LINES</p>
+        <p className="eyebrow"><PencilLine size={16} aria-hidden="true" /> words between the lines</p>
         <h1>Notes from my <span className="notebook-highlight">notebook.</span> <AnimatedEmoji name="typing" size={38} className="blog-emoji" eager /></h1>
         <p>A few ideas, some work in progress, and things worth writing down.</p>
       </header>
 
       {posts.length > 0 ? (
         <section aria-label="Blog posts" className="blog-posts">
-          <div className="blog-list-heading"><span>{String(posts.length).padStart(2, "0")} {posts.length === 1 ? "NOTE" : "NOTES"}</span><span>NEWEST FIRST ↓</span></div>
+          <div className="blog-list-heading"><span>{String(posts.length).padStart(2, "0")} {posts.length === 1 ? "note" : "notes"}</span><span>newest first ↓</span></div>
           {posts.map((post, index) => (
             <article key={post.slug}>
               <Link className="post-card" href={`/blog/${post.slug}`}>

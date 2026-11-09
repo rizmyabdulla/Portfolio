@@ -10,9 +10,12 @@ export const portfolio = {
   about: "I'm a software engineer and entrepreneur who enjoys taking an idea from the first sketch to a working product. My work spans web, game, and app development, with a soft spot for open source and learning something new along the way.",
   email: "rizmyabdulla@gmail.com" as string | null,
   socials: [
-    { label: "GitHub", url: "https://github.com/rizmyabdulla" },
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/rizmyabdulla/" },
-  ] as { label: string; url: string }[],
+    { label: "GitHub", display: "github.com/rizmyabdulla", url: "https://github.com/rizmyabdulla" },
+    { label: "Instagram", display: "instagram.com/_rizmyabdulla", url: "https://instagram.com/_rizmyabdulla" },
+    { label: "LinkedIn", display: "linkedin.com/in/rizmyabdulla", url: "https://www.linkedin.com/in/rizmyabdulla/" },
+    { label: "Telegram", display: "t.me/Notmrstrange", url: "https://t.me/Notmrstrange" },
+    { label: "X", display: "twitter.com/rizmyabdulla", url: "https://twitter.com/rizmyabdulla" },
+  ] as { label: string; display: string; url: string }[],
   // Selected from the technology list in the public GitHub profile README.
   skills: [
     { name: "TypeScript", mark: "TS", tone: "blue", hint: "JavaScript with a type system." },
@@ -28,7 +31,7 @@ export const portfolio = {
   projects: [
     {
       title: "Kordify",
-      category: "FIELD SERVICE MANAGEMENT",
+      category: "Field service management",
       description: "A home for the work behind field service. Scheduling, dispatch, offline job updates, and invoicing, with a web app for the office and a mobile app for technicians.",
       tags: ["Web & mobile", "Field service", "Offline-ready"],
       url: "https://getkordify.com",
@@ -41,7 +44,7 @@ export const portfolio = {
     },
     {
       title: "TellerCat",
-      category: "AI CUSTOMER SERVICE",
+      category: "AI customer service",
       description: "Customer conversations, brought together. AI chat and voice agents across WhatsApp, Instagram, web chat, email, and phone, with a shared inbox and human takeover.",
       tags: ["AI agents", "Chat & voice", "Shared inbox"],
       url: "https://tellercat.com",

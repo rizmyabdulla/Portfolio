@@ -284,14 +284,25 @@
     top: auto;
     left: auto;
     justify-content: center;
+    gap: 10px;
     width: auto;
-    margin: 12px 0 0;
-    font-size: 16px;
+    margin: 14px 0 0;
+    font-size: 19px;
+    transform: rotate(-2deg);
+  }
+  .portrait-joke > span:not(.portrait-joke-emoji) {
+    transform: none !important;
+    text-align: left;
   }
   .portrait-joke-arrow {
     position: static;
-    width: 48px;
-    height: 36px;
-    transform: rotate(-20deg);
+    flex: 0 0 auto;
+    width: 36px;
+    height: 44px;
+    transform: rotate(-135deg) scale(.85);
+  }
+  .portrait-joke-emoji {
+    position: static;
+    flex: 0 0 30px;
   }
 }

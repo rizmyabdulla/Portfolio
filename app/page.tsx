@@ -19,7 +19,7 @@ export default function Home() {
         <main id="main" tabIndex={-1}>
           <section className="hero" aria-labelledby="intro-title">
             <div className="intro-copy">
-              <div className="eyebrow"><span className="tiny-star" aria-hidden="true">✳</span> A PERSONAL NOTEBOOK, ON THE INTERNET</div>
+              <div className="eyebrow"><span className="tiny-star" aria-hidden="true">✳</span> a personal notebook, on the internet</div>
               <h1 id="intro-title">Hey, I&apos;m<br /><span className="name-highlight">{portfolio.name}</span><AnimatedEmoji name="wave" size={44} className="wave" eager /></h1>
               <p className="intro-lead">{portfolio.role}</p>
               <p className="intro-description">{portfolio.introduction}</p>
@@ -61,11 +61,14 @@ export default function Home() {
 
           <section id="contact" className="closing-note" aria-labelledby="closing-title">
             <AnimatedEmoji name="coffee" size={42} className="closing-emoji" />
-            <div><p className="eyebrow">GOOD THINGS START WITH A HELLO</p><h2 id="closing-title">Have a little idea?</h2><p>Let&apos;s talk about what it could become.</p>{portfolio.email && <a className="email-link" href={`mailto:${portfolio.email}`}><Mail size={18} aria-hidden="true" />{portfolio.email}<ArrowUpRight size={17} aria-hidden="true" /></a>}<CopyDomain domain={portfolio.domain} /></div>
+            <div><p className="eyebrow">good things start with a hello</p><h2 id="closing-title">Have a little idea?</h2><p>Let&apos;s talk about what it could become.</p>{portfolio.email && <a className="email-link" href={`mailto:${portfolio.email}`}><Mail size={18} aria-hidden="true" />{portfolio.email}<ArrowUpRight size={17} aria-hidden="true" /></a>}<CopyDomain domain={portfolio.domain} /></div>
             <MoveUpRight className="closing-arrow" size={55} strokeWidth={1.2} aria-hidden="true" />
           </section>
 
-          {(portfolio.email || portfolio.socials.length > 0) && <section className="social-links" aria-label={`Find ${portfolio.name} online`}>{portfolio.email && <a className="ink-link" href={`mailto:${portfolio.email}`}>Say hello <ArrowUpRight size={16} aria-hidden="true" /></a>}{portfolio.socials.map(social => <a key={social.url} className="ink-link" href={social.url} target="_blank" rel="noopener noreferrer">{social.label}<ArrowUpRight size={16} aria-hidden="true" /></a>)}</section>}
+          <section id="online" className="social-links" aria-labelledby="online-title">
+            <h2 id="online-title">Find me online</h2>
+            <ul>{portfolio.socials.map(social => <li key={social.url}><a href={social.url} target="_blank" rel="noopener noreferrer"><span>{social.label}</span><span>{social.display}</span><ArrowUpRight size={18} aria-hidden="true" /></a></li>)}{portfolio.email && <li><a href={`mailto:${portfolio.email}`}><span>Email</span><span>{portfolio.email}</span><ArrowUpRight size={18} aria-hidden="true" /></a></li>}</ul>
+          </section>
         </main>
 
         <SiteFooter />

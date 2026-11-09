@@ -50,7 +50,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <Link className="post-back ink-link" href="/blog"><ArrowLeft size={16} aria-hidden="true" /> Back to all notes</Link>
       <article>
         <header className="post-header">
-          <p className="eyebrow">A PAGE FROM THE NOTEBOOK</p>
+          <p className="eyebrow">a page from the notebook</p>
           <h1>{post.title}</h1>
           <p className="post-description">{post.description}</p>
           <div className="post-byline">
@@ -67,7 +67,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <Markdown content={post.content} />
 
         <footer className="post-signoff">
-          <div><p className="eyebrow">THANKS FOR READING</p><p>Found this interesting? Pass it on.</p></div>
+          <div><p className="eyebrow">thanks for reading</p><p>Found this interesting? Pass it on.</p></div>
           <CopyLink url={url} label="Copy article link" accessibleLabel="Copy article link" fallbackLabel="Article link" />
         </footer>
       </article>
