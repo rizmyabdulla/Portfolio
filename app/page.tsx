@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, Mail, MoveUpRight, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Github, Instagram, Linkedin, Mail, MoveUpRight, Send, Sparkles, Twitter } from "lucide-react";
 import { CopyDomain } from "@/components/copy-domain";
 import { HeroPortrait } from "@/components/hero-portrait";
 import { portfolio } from "@/lib/portfolio";
@@ -8,6 +8,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { AnimatedEmoji } from "@/components/animated-emoji";
 import { HoverCard } from "@/components/hover-card";
 import { Tooltip } from "@/components/tooltip";
+
+const socialIcons: Record<string, typeof Github> = { GitHub: Github, Instagram, LinkedIn: Linkedin, Telegram: Send, X: Twitter };
 
 export default function Home() {
   return (
@@ -67,7 +69,7 @@ export default function Home() {
 
           <section id="online" className="social-links" aria-labelledby="online-title">
             <h2 id="online-title">Find me online</h2>
-            <ul>{portfolio.socials.map(social => <li key={social.url}><a href={social.url} target="_blank" rel="noopener noreferrer"><span>{social.label}</span><span>{social.display}</span><ArrowUpRight size={18} aria-hidden="true" /></a></li>)}{portfolio.email && <li><a href={`mailto:${portfolio.email}`}><span>Email</span><span>{portfolio.email}</span><ArrowUpRight size={18} aria-hidden="true" /></a></li>}</ul>
+            <ul>{portfolio.socials.map(social => { const Icon = socialIcons[social.label] ?? ArrowUpRight; return <li key={social.url}><a href={social.url} target="_blank" rel="noopener noreferrer"><Icon size={26} strokeWidth={1.6} aria-hidden="true" /><span>{social.label}</span></a></li>; })}{portfolio.email && <li><a href={`mailto:${portfolio.email}`} aria-label="Email"><Mail size={26} strokeWidth={1.6} aria-hidden="true" /><span>Email</span></a></li>}</ul>
           </section>
         </main>
 
