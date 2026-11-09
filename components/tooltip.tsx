@@ -1,11 +1,12 @@
 "use client";
 
-import { cloneElement, useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type ReactElement } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 
-export function Tooltip({ text, children, className = "" }: { text: string; children: ReactElement<{ "aria-describedby"?: string }>; className?: string }) {
+export function Tooltip({ text, children, className = "" }: { text: ReactNode; children: ReactNode; className?: string }) {
   const id = useId();
   const [open, setOpen] = useState(false);
+  const [focusTarget, setFocusTarget] = useState<HTMLElement | null>(null);
   const [position, setPosition] = useState({ left: 0, top: 0 });
   const overlay = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLSpanElement>(null);
@@ -25,6 +26,17 @@ export function Tooltip({ text, children, className = "" }: { text: string; chil
   useLayoutEffect(() => {
     if (open) place(point.current.x, point.current.y);
   }, [open, place]);
+
+  useEffect(() => {
+    const focused = focusTarget;
+    if (!open || !(focused instanceof HTMLElement) || !trigger.current?.contains(focused)) return;
+    const previous = focused.getAttribute("aria-describedby");
+    focused.setAttribute("aria-describedby", [previous, id].filter(Boolean).join(" "));
+    return () => {
+      if (previous === null) focused.removeAttribute("aria-describedby");
+      else focused.setAttribute("aria-describedby", previous);
+    };
+  }, [open, id, focusTarget]);
 
   useEffect(() => {
     const closeOther = (event: Event) => {
@@ -77,6 +89,7 @@ export function Tooltip({ text, children, className = "" }: { text: string; chil
         if (!event.currentTarget.contains(document.activeElement)) setOpen(false);
       }}
       onFocusCapture={event => {
+        setFocusTarget(event.target instanceof HTMLElement ? event.target : null);
         anchored.current = true;
         const rect = event.currentTarget.getBoundingClientRect();
         point.current = { x: rect.left, y: rect.bottom + 10 };
@@ -84,13 +97,16 @@ export function Tooltip({ text, children, className = "" }: { text: string; chil
         show();
       }}
       onBlurCapture={event => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false);
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setFocusTarget(null);
+          setOpen(false);
+        }
       }}
       onKeyDown={event => {
         if (event.key === "Escape") setOpen(false);
       }}
     >
-      {cloneElement(children, { "aria-describedby": open ? [children.props["aria-describedby"], id].filter(Boolean).join(" ") : children.props["aria-describedby"] })}
+      {children}
       {open && createPortal(<div ref={overlay} id={id} role="tooltip" className="paper-tooltip" style={position}>{text}</div>, document.body)}
     </span>
   );
