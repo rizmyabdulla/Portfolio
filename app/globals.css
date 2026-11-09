@@ -35,6 +35,7 @@ main:focus { outline: none; }
 nav { display: flex; gap: 31px; align-items: center; }
 .ink-link { background: linear-gradient(var(--blue), var(--blue)) left 90% / 0 55% no-repeat; transition: background-size .2s; }
 .ink-link:hover { background-size: 100% 55%; }
+.ink-link[aria-current] { background-image: linear-gradient(var(--yellow), var(--yellow)); background-size: 100% 55%; }
 .nav-note { display: grid; place-items: center; background: var(--yellow); width: 39px; height: 32px; transform: rotate(4deg); clip-path: polygon(2% 7%, 98% 0, 95% 96%, 0 91%); }
 .hero { display: grid; grid-template-columns: 1.55fr 1fr; gap: 32px; padding: 65px 0 64px; align-items: center; }
 .intro-copy { min-width: 0; }
@@ -148,7 +149,8 @@ h3 { font-size: 29px; line-height: 1.2; margin: 15px 0 9px; }
   body { font-size: 19px; }
   .page-shell { padding: 0 21px 0 36px; }
   .paper-margin { left: 19px; }
-  .site-header { min-height: 81px; }
+  .site-header { min-height: 81px; flex-wrap: wrap; gap: 12px 18px; padding-block: 16px; }
+  .site-header nav { margin-left: auto; }
   .wordmark { gap: 8px; font-size: 27px; }
   .profile-avatar { width: 32px; height: 32px; }
   nav { gap: 17px; font-size: 18px; }
@@ -183,7 +185,7 @@ h3 { font-size: 29px; line-height: 1.2; margin: 15px 0 9px; }
 }
 
 @media (max-width: 360px) {
-  nav { gap: 12px; }
+  .site-header nav { gap: 9px; font-size: 16px; }
   .wordmark { font-size: 24px; }
   .profile-avatar { width: 28px; height: 28px; }
   .eyebrow { letter-spacing: .7px; }

@@ -1,0 +1,73 @@
+.hover-hint { display: inline-flex; vertical-align: middle; max-width: 100%; }
+.animated-emoji { display: inline-flex; position: relative; flex-shrink: 0; align-items: center; justify-content: center; vertical-align: middle; }
+.animated-emoji img { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; pointer-events: none; }
+.animated-emoji .emoji-still { display: none; }
+.heading-emoji { margin-left: 7px; }
+.blog-emoji { transform: rotate(5deg); margin-left: 3px; }
+.closing-emoji { margin-top: 12px; }
+.paper-tooltip { position: fixed; z-index: 1000; width: max-content; max-width: min(240px, calc(100vw - 20px)); padding: 7px 12px; background: var(--blue); color: var(--ink); border: 1px solid #748d9d; border-radius: 2px 5px 3px 2px; box-shadow: 3px 3px 0 #44454318; font-family: var(--font-body), cursive; font-size: 16px; line-height: 1.4; pointer-events: none; transform: rotate(-1.5deg); animation: tooltip-arrive .12s ease-out; overflow-wrap: anywhere; }
+.paper-tooltip::before { content: ""; position: absolute; top: -5px; left: 13px; width: 8px; height: 8px; border-top: 1px solid #748d9d; border-left: 1px solid #748d9d; background: var(--blue); transform: rotate(45deg); }
+.motion-toggle { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 5px; padding: 3px 0; border: 0; background: transparent; color: var(--muted); font: inherit; cursor: pointer; }
+.motion-toggle:hover, .motion-toggle:focus-visible { color: #355c72; }
+.motion-toggle span { border-bottom: 1px dashed #a5b1a6; }
+.hover-card { transition: transform .22s ease-out, box-shadow .22s, border-color .22s; }
+.hover-card:focus-within { border-color: #7596a3; box-shadow: 5px 6px 0 #89a8b326; }
+.portrait-note { transition: transform .3s ease, box-shadow .3s ease; }
+.profile-avatar, .nav-note { transition: transform .25s ease; }
+.name-highlight::after { transition: height .2s, transform .2s; }
+.tech-list li, .tech-list li:nth-child(even) { background: transparent; padding: 0; clip-path: none; transform: none; }
+.tech-chip { display: inline-flex; gap: 10px; align-items: center; padding: 8px 15px; background: #eae8df; clip-path: polygon(1% 5%, 99% 0, 98% 95%, 0 100%); transform: rotate(var(--chip-angle, -.6deg)); transition: transform .2s, background-color .2s; cursor: help; }
+.tech-list li:nth-child(even) .tech-chip { --chip-angle: 1deg; background: #e4e9e5; }
+.tech-chip:focus-visible { outline: 2px dashed #326a96; outline-offset: -4px; background: var(--blue); }
+:is(.text-cta, .project-link, .intro-contact, .email-link, .back-top) { background-image: linear-gradient(var(--blue), var(--blue)); background-position: 0 90%; background-repeat: no-repeat; background-size: 0 65%; transition: background-size .22s, color .22s, gap .22s; }
+:is(.text-cta, .project-link, .intro-contact, .email-link, .back-top):is(:hover, :focus-visible), .ink-link:focus-visible { background-size: 100% 65%; }
+.ink-link[aria-current]:focus-visible { background-size: 100% 65%; }
+:is(.project-link, .intro-contact, .email-link, .social-links a, .text-cta) svg { transition: transform .2s; }
+.domain-copy:focus-visible { background-size: 100% 85%; }
+.post-card:focus-visible { background: #f1eddf90; box-shadow: -3px 0 0 var(--blue); }
+.post-card:focus-visible .post-read svg { transform: translateX(4px); }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hover-card:hover { transform: perspective(1200px) rotateX(var(--card-x, 0deg)) rotateY(var(--card-y, 0deg)) translateY(-4px); border-color: #91a7aa; box-shadow: 7px 10px 0 #6f8c8820; }
+  .portrait-note:hover { transform: rotate(1deg) translateY(-5px); box-shadow: 7px 10px 0 #45454315; }
+  .wordmark:is(:hover, :focus-visible) .profile-avatar { transform: rotate(3deg) scale(1.08); }
+  .nav-note:is(:hover, :focus-visible) { transform: rotate(-5deg) scale(1.08); }
+  .name-highlight:hover::after { height: 60%; transform: rotate(0deg); }
+  .tech-chip:hover { transform: translateY(-3px) rotate(-2deg); background: var(--blue); }
+  .post-card:hover { transform: translateX(4px); box-shadow: -3px 0 0 var(--blue); }
+  :is(.project-link, .intro-contact, .email-link, .social-links a):is(:hover, :focus-visible) svg { transform: translate(2px, -2px); }
+  .text-cta:is(:hover, :focus-visible) .lucide-arrow-down { transform: translateY(3px); }
+  .portrait-note:hover .doodle-star { animation: doodle-pop .65s ease-out; }
+}
+
+@keyframes tooltip-arrive { from { opacity: 0; transform: translateY(3px) rotate(-1.5deg); } to { opacity: 1; transform: translateY(0) rotate(-1.5deg); } }
+@keyframes doodle-pop { 0%, 100% { scale: 1; rotate: 0deg; } 45% { scale: 1.2; rotate: 12deg; } }
+.doodle-star { transform-box: fill-box; transform-origin: center; }
+
+html[data-motion="paused"] .emoji-moving { display: none; }
+html[data-motion="paused"] .emoji-still { display: block; }
+html[data-motion="paused"] *, html[data-motion="paused"] *::before, html[data-motion="paused"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+html[data-motion="paused"] :is(.hover-card, .post-card) { transform: none !important; }
+html[data-motion="paused"] .portrait-note { transform: rotate(5deg); }
+html[data-motion="paused"] .profile-avatar { transform: rotate(-7deg); }
+html[data-motion="paused"] .nav-note { transform: rotate(4deg); }
+html[data-motion="paused"] .tech-chip { transform: rotate(var(--chip-angle, -.6deg)); }
+html[data-motion="paused"] :is(.project-link, .intro-contact, .email-link, .social-links a, .text-cta) svg { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="on"]) .emoji-moving { display: none; }
+  html:not([data-motion="on"]) .emoji-still { display: block; }
+  .hover-card { transform: none; }
+}
+
+@media (max-width: 560px) {
+  .tech-chip { padding: 7px 12px; }
+  .heading-emoji { max-width: 28px; max-height: 28px; margin-left: 3px; }
+  .closing-emoji { max-width: 30px; max-height: 30px; }
+  .paper-tooltip { font-size: 15px; }
+  .blog-emoji { max-width: 30px; max-height: 30px; }
+}
+
+@media (max-width: 360px) {
+  .closing-note > .hover-hint { display: none; }
+}

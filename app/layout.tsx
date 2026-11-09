@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Caveat_Brush, Patrick_Hand } from "next/font/google";
 import { portfolio } from "@/lib/portfolio";
 import "./globals.css";
+import "./motion.css";
+import "./portrait.css";
 
 const display = Caveat_Brush({ weight: "400", subsets: ["latin"], variable: "--font-heading", display: "swap" });
 const handwriting = Patrick_Hand({ weight: "400", subsets: ["latin"], variable: "--font-body", display: "swap" });

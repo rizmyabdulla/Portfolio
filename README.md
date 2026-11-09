@@ -1,6 +1,11 @@
-# Rizmy Abdullah — Portfolio
+# my-portfolio
 
-A Next.js App Router portfolio for **rizmyabdulla.dev**, with a warm lined-paper background, handwritten typography, blue and yellow marker highlights, and notebook illustrations.
+A personal portfolio and Markdown blog built with Next.js, React, TypeScript, and Tailwind CSS. The design combines lined paper, handwritten typography, and blue and yellow highlights.
+
+- Responsive project showcase, profile, and contact links.
+- Markdown articles with tags, reading times, and draft support.
+- Search and social metadata, structured data, and an XML sitemap.
+- Animated emojis, paper tooltips, and interactive hover effects with reduced-motion support.
 
 ## Run locally
 
@@ -11,21 +16,28 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:3000. The directory is named `Portfolio`; the npm package is lowercase to follow npm naming rules.
+Open http://localhost:3000.
 
 ## Customize
 
-- `lib/portfolio.ts`: name, domain, introduction, about text, projects, email, and social URLs.
+- `lib/portfolio.ts`: site name, domain, profile, projects, skills, and contact links.
 - `app/globals.css`: paper, ink, highlights, layout, and responsive rules.
-- `components/notebook-art.tsx`: original initials illustration.
-- `public/projects/`: local screenshots of Kordify and TellerCat.
-- `public/images/rizmy-avatar.png`: public GitHub profile avatar.
+- `components/hero-portrait.tsx` and `app/portrait.css`: portrait composition and animated SVG scribbles.
+- `public/projects/`: project preview images.
+- `public/images/portrait-cutout.png`: transparent portrait used in the hero and profile avatars.
+- `content/blog/`: Markdown articles and draft templates.
+- `app/blog/blog.css`: blog and article styles.
+- `app/motion.css`: emoji, tooltip, and hover styles.
+- `lib/emojis.ts` and `public/emojis/`: emoji labels, animations, and static fallbacks.
 
-The name, Software Engineer & Entrepreneur role, domain, email, social links, and projects were supplied by Rizmy. The bio and selected skills were adapted from the [public GitHub profile](https://github.com/rizmyabdulla/RizmyAbdulla). Product descriptions were checked against [Kordify](https://getkordify.com) and [TellerCat](https://tellercat.com). LinkedIn blocks automated reading, so no biography or employment details were taken from it. Dated age and education claims from the GitHub README are omitted.
+The footer's motion control pauses animations and saves the preference in the browser. System reduced-motion settings are respected by default.
+
+Page titles, author names, and structured data use the shared site configuration. When changing the brand, also update the favicon in `app/icon.svg`.
 
 ## Check and build
 
 ```powershell
+npm test
 npm run lint
 npm run typecheck
 npm run build
@@ -34,10 +46,40 @@ npm start
 
 Google fonts are self-hosted by Next.js after being downloaded at build time, so the first build needs internet access. Retain `package-lock.json` and use `npm ci` for reproducible installs.
 
+## Blog
+
+The blog is at `/blog`; each article is at `/blog/<filename-without-md>`. Posts live in `content/blog/` and are rendered from Markdown, with tables, fenced code blocks, task lists, and strikethrough support. Raw HTML is disabled.
+
+To publish a note, create a file such as `content/blog/my-new-note.md`:
+
+```markdown
+---
+title: "My new note"
+description: "A short summary for the blog list and search previews."
+date: "2026-11-09"
+tags: ["Engineering", "Notes"]
+draft: false
+---
+
+Your introduction goes here.
+
+## A heading
+
+The rest of your article.
+```
+
+Use lowercase words separated by hyphens in filenames. `title`, `description`, and `date` are required. `tags` and `draft` are optional; `draft` defaults to `false`. Add an optional `updated: "2026-11-10"` when revising an article. Dates must use `YYYY-MM-DD`; an update cannot predate the original article.
+
+`your-next-note.md` is an unpublished template. Posts with `draft: true` are excluded from the list, article routes, and sitemap. Published posts sort by date, newest first, and have reading times, canonical URLs, article metadata, and structured data. Remove all published files for the empty state. Add images to `public/blog/` and reference them as `![Description](/blog/image.jpg)` in Markdown.
+
+Posts are generated at build time: run `npm run build` and redeploy after adding, editing, removing, or publishing a post. There is no CMS or login to configure. To preview a draft locally, temporarily set `draft: false` while running `npm run dev`; restore it before deploying if it is not ready.
+
+`npm test` checks metadata validation, ordering, draft exclusion, missing content, date formatting, Markdown rendering, and unsafe-link handling.
+
 ## Deployment
 
-Deploy the `Portfolio` directory as a Next.js project. Set the custom domain to `rizmyabdulla.dev` with your hosting provider and add its DNS records at your registrar. Canonical URLs, robots.txt, sitemap.xml, favicon, and Open Graph image already use that domain. This source does not configure DNS or publish the site.
+Deploy as a Next.js project using `npm run build` and `npm start`, or use a hosting provider with Next.js support. Configure the production URL in `lib/portfolio.ts` and follow the host's custom domain and DNS instructions. Rebuild after updating site content or configuration.
 
-## Design reference
+## Acknowledgments
 
-Inspired by Caleb Ephrem's [portfolio](https://github.com/calebephrem/portfolio): lined paper, handwritten fonts, highlighter accents, and playful paper shapes. This is a fresh implementation with original copy and SVG artwork; it does not reuse Caleb's photos, identity, posts, or projects. The reference is MIT-licensed.
+Emoji artwork: [emoji.gg](https://emoji.gg/). Individual source URLs are recorded in `public/emojis/sources.json`.

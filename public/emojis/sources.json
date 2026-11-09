@@ -1,0 +1,10 @@
+{
+  "provider": "emoji.gg",
+  "assets": {
+    "wave": "https://cdn3.emoji.gg/emojis/7362_ablobwavereverse.gif",
+    "cool": "https://cdn3.emoji.gg/emojis/213649-blobcool.gif",
+    "typing": "https://cdn3.emoji.gg/emojis/877573-cat-typing.gif",
+    "coffee": "https://cdn3.emoji.gg/emojis/40920-sip.gif",
+    "giggle": "https://cdn3.emoji.gg/emojis/175472-pepelaugh.gif"
+  }
+}

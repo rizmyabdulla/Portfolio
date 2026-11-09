@@ -1,0 +1,48 @@
+.hero-art:has(.hero-portrait) { width: 100%; max-width: 340px; margin-inline: auto; padding: 0; }
+.hero-portrait { width: 100%; margin: 0; }
+.portrait-stage { position: relative; isolation: isolate; aspect-ratio: 4 / 5; }
+.portrait-paper { position: absolute; z-index: 0; pointer-events: none; }
+.portrait-paper-yellow { inset: 16% 8% 11% 7%; background: #f0e5ae; border-radius: 47% 49% 42% 48% / 46% 37% 55% 46%; transform: rotate(-11deg); }
+.portrait-paper-blue { inset: 18% 9% 9% 11%; background: #c7deea; border-radius: 44% 46% 39% 44% / 38% 41% 53% 48%; transform: rotate(7deg); }
+.portrait-scribbles { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.portrait-photo { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 4px 5px #3f3f3512); clip-path: polygon(0 0, 100% 0, 100% 84%, 97% 90%, 88% 96%, 74% 99%, 60% 100%, 40% 100%, 26% 99%, 12% 96%, 3% 90%, 0 84%); }
+.portrait-little-note { position: absolute; z-index: 3; bottom: 7%; left: -1%; padding: 3px 11px; background: var(--yellow); color: #5f604d; font-size: 15px; line-height: 1.6; transform: rotate(-7deg); box-shadow: 2px 3px 0 #4445430d; pointer-events: none; }
+.portrait-little-note > span { display: inline-block; padding-left: 4px; color: #718e94; }
+.portrait-photo-caption { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: -3px; color: var(--muted); font-size: 18px; text-align: center; }
+.portrait-caption-arrow { display: flex; align-items: center; gap: 6px; transform: rotate(-4deg); }
+.portrait-caption-joke { font-size: 16px; line-height: 1.35; }
+.crying-emoji { display: inline-block; transform-origin: center bottom; }
+.portrait-photo-caption svg { width: 42px; height: 30px; margin-top: -15px; color: #718e94; }
+.profile-avatar { background-color: #e4e8df; object-position: center 24%; }
+.portrait-loop { transform-origin: center; transform-box: fill-box; }
+.portrait-spark { transform-origin: center; transform-box: fill-box; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .portrait-paper-yellow { animation: paper-drift-yellow 8s ease-in-out infinite; }
+  .portrait-paper-blue { animation: paper-drift-blue 9s ease-in-out infinite; }
+  .portrait-loop { animation: scribble-orbit 22s linear infinite; }
+  .portrait-loop path { animation: scribble-dash 12s linear infinite; }
+  .portrait-spark-one { animation: portrait-star-float 5.5s ease-in-out infinite; }
+  .portrait-spark-two { animation: portrait-star-float 6.5s ease-in-out -2s infinite reverse; }
+  .portrait-small-marks { animation: portrait-marks-drift 7s ease-in-out infinite; }
+  .crying-emoji { animation: cry-wobble 1.4s ease-in-out infinite; }
+}
+
+@keyframes paper-drift-yellow { 0%, 100% { transform: rotate(-11deg) translateY(0); } 50% { transform: rotate(-6deg) translateY(-5px); } }
+@keyframes paper-drift-blue { 0%, 100% { transform: rotate(7deg) translateY(0); } 50% { transform: rotate(11deg) translateY(3px); } }
+@keyframes scribble-orbit { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(6deg); } }
+@keyframes scribble-dash { to { stroke-dashoffset: -130; } }
+@keyframes portrait-star-float { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-7px) rotate(8deg); } }
+@keyframes portrait-marks-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+@keyframes cry-wobble { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg) translateY(-2px); } 75% { transform: rotate(12deg) translateY(-2px); } }
+
+@media (max-width: 760px) and (min-width: 561px) {
+  .portrait-little-note { font-size: 12px; padding-inline: 8px; }
+  .portrait-photo-caption { font-size: 15px; }
+}
+
+@media (max-width: 560px) {
+  .hero-art:has(.hero-portrait) { max-width: 285px; }
+  .portrait-little-note { left: 0; font-size: 14px; }
+  .portrait-photo-caption { font-size: 17px; }
+}

@@ -1,7 +1,7 @@
 // Personal content lives here. Add only real projects, skills, and profile URLs.
 export const portfolio = {
-  name: "Rizmy Abdullah",
-  firstName: "Rizmy",
+  name: "Abdullah",
+  firstName: "Abdullah",
   domain: "rizmyabdulla.dev",
   url: "https://rizmyabdulla.dev",
   role: "Software Engineer & Entrepreneur",
@@ -15,15 +15,15 @@ export const portfolio = {
   ] as { label: string; url: string }[],
   // Selected from the technology list in the public GitHub profile README.
   skills: [
-    { name: "TypeScript", mark: "TS", tone: "blue" },
-    { name: "React", mark: "⚛", tone: "cyan" },
-    { name: "Next.js", mark: "N", tone: "ink" },
-    { name: "Flutter", mark: "F", tone: "blue" },
-    { name: "Dart", mark: "D", tone: "cyan" },
-    { name: "Node.js", mark: "JS", tone: "green" },
-    { name: "Python", mark: "Py", tone: "blue" },
-    { name: "PostgreSQL", mark: "Pg", tone: "blue" },
-    { name: "Docker", mark: "◫", tone: "cyan" },
+    { name: "TypeScript", mark: "TS", tone: "blue", hint: "JavaScript with a type system." },
+    { name: "React", mark: "⚛", tone: "cyan", hint: "Interfaces, one component at a time." },
+    { name: "Next.js", mark: "N", tone: "ink", hint: "A framework for React on the web." },
+    { name: "Flutter", mark: "F", tone: "blue", hint: "One toolkit for apps across platforms." },
+    { name: "Dart", mark: "D", tone: "cyan", hint: "The language behind Flutter apps." },
+    { name: "Node.js", mark: "JS", tone: "green", hint: "JavaScript beyond the browser." },
+    { name: "Python", mark: "Py", tone: "blue", hint: "Scripts, tools, and experiments." },
+    { name: "PostgreSQL", mark: "Pg", tone: "blue", hint: "A home for relational data." },
+    { name: "Docker", mark: "◫", tone: "cyan", hint: "Applications packed into containers." },
   ],
   projects: [
     {
