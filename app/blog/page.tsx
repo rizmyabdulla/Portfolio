@@ -3,12 +3,13 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, PencilLine } from "lucide-react";
 import { formatPostDate, getBlogPosts } from "@/lib/blog";
 import { portfolio } from "@/lib/portfolio";
+import { JsonLd } from "@/lib/jsonld";
 import { AnimatedEmoji } from "@/components/animated-emoji";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: `Notes on software, projects, and building things from ${portfolio.name}.`,
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/blog", types: { "application/rss+xml": "/blog/feed.xml" } },
   openGraph: {
     type: "website",
     title: `Notes from my notebook | ${portfolio.name}`,
@@ -22,6 +23,7 @@ export default async function Blog() {
 
   return (
     <>
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Blog", url: `${portfolio.url}/blog`, name: `Notes from ${portfolio.name}'s notebook`, author: { "@type": "Person", name: portfolio.name, url: portfolio.url }, blogPost: posts.map(post => ({ "@type": "BlogPosting", headline: post.title, url: `${portfolio.url}/blog/${post.slug}`, datePublished: post.date })) }} />
       <header className="blog-intro">
         <p className="eyebrow"><PencilLine size={16} aria-hidden="true" /> words between the lines</p>
         <h1>Notes from my <span className="notebook-highlight">notebook.</span> <AnimatedEmoji name="typing" size={38} className="blog-emoji" eager /></h1>

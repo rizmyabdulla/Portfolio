@@ -7,6 +7,7 @@ import { CopyLink } from "@/components/copy-link";
 import { Markdown } from "@/components/markdown";
 import { formatPostDate, getBlogPost, getBlogPosts } from "@/lib/blog";
 import { portfolio } from "@/lib/portfolio";
+import { JsonLd } from "@/lib/jsonld";
 
 type PostPageProps = { params: Promise<{ slug: string }> };
 
@@ -33,6 +34,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       authors: [portfolio.name],
       tags: post.tags,
     },
+    twitter: { card: "summary_large_image", title: post.title, description: post.description },
   };
 }
 
@@ -47,6 +49,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <div className="post-page">
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.description, datePublished: post.date, dateModified: post.updated ?? post.date, mainEntityOfPage: url, url, keywords: post.tags.join(", "), author: { "@type": "Person", name: portfolio.name, url: portfolio.url }, publisher: { "@type": "Person", name: portfolio.name, url: portfolio.url }, image: `${url}/opengraph-image` }} />
       <Link className="post-back ink-link" href="/blog"><ArrowLeft size={16} aria-hidden="true" /> Back to all notes</Link>
       <article>
         <header className="post-header">
@@ -78,20 +81,6 @@ export default async function PostPage({ params }: PostPageProps) {
       </nav>}
 
       <Link className="text-cta" href="/blog">Back to the notebook <ArrowLeft size={17} aria-hidden="true" /></Link>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        headline: post.title,
-        description: post.description,
-        datePublished: post.date,
-        dateModified: post.updated ?? post.date,
-        url,
-        mainEntityOfPage: url,
-        author: { "@type": "Person", name: portfolio.name, url: portfolio.url },
-        publisher: { "@type": "Person", name: portfolio.name, url: portfolio.url },
-        image: `${portfolio.url}/opengraph-image`,
-        keywords: post.tags.join(", "),
-      }).replace(/</g, "\\u003c") }} />
     </div>
   );
 }
